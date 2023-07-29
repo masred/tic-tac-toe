@@ -1,3 +1,5 @@
+import { Board } from './components/Board';
+
 export const App = () => {
-  return <></>;
+  return <Board />;
 };
