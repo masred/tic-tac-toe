@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 export const Square = ({ value, onSquareClick }) => {
-  console.log(onSquareClick);
   return (
     <button className="square" onClick={onSquareClick}>
       {value}
@@ -10,6 +9,6 @@ export const Square = ({ value, onSquareClick }) => {
 };
 
 Square.propTypes = {
-  value: PropTypes.string.isRequired,
-  onSquareClick: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  onSquareClick: PropTypes.func,
 };

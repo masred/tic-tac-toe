@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 import { Square } from './Square';
 
-export const Board = () => {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
+export const Board = ({ xIsNext, squares, onPlay }) => {
+  const handleClick = (index) => {
+    if (squares[index] || calculateWinner(squares)) return;
+    const newSquares = squares.slice();
+    newSquares[index] = xIsNext ? 'X' : 'O';
+    onPlay(newSquares);
+  };
 
   const calculateWinner = (squares) => {
     const lines = [
@@ -29,14 +33,6 @@ export const Board = () => {
     return null;
   };
 
-  const handleClick = (index) => {
-    if (squares[index] || calculateWinner(squares)) return;
-    const newSquares = squares.slice();
-    newSquares[index] = xIsNext ? 'X' : 'O';
-    setSquares(newSquares);
-    setXIsNext(!xIsNext);
-  };
-
   const winner = calculateWinner(squares);
   const status = winner
     ? `Winner: ${winner}`
@@ -57,4 +53,10 @@ export const Board = () => {
       </div>
     </>
   );
+};
+
+Board.propTypes = {
+  xIsNext: PropTypes.bool,
+  squares: PropTypes.arrayOf(PropTypes.string),
+  onPlay: PropTypes.func,
 };
