@@ -27,11 +27,11 @@ export const Game = () => {
   });
 
   return (
-    <div className="game">
-      <div className="game-board">
+    <div className="flex justify-center items-center h-screen">
+      <div className="font-bold text-center">
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
-      <div className="game-info">
+      <div className="ml-[20px]">
         <ol>{moves}</ol>
       </div>
     </div>

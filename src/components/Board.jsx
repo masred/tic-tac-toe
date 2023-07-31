@@ -39,8 +39,8 @@ export const Board = ({ xIsNext, squares, onPlay }) => {
     : `Next player: ${xIsNext ? 'X' : 'O'}`;
   return (
     <>
-      <div className="status">{status}</div>
-      <div className="board">
+      <div className="mb-4">{status}</div>
+      <div className="flex flex-wrap w-[315px] h-[315px]">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
         <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
